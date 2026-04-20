@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Showcase</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background:#f5f7fa; color:#333; line-height:1.6; }
+        .container { max-width:1200px; margin:0 auto; padding:20px; }
+        header { text-align:center; padding:60px 20px 40px; background:#456ee6; color:white; }
+        header h1 { font-size:2.5rem; margin-bottom:20px; font-weight:700; }
+        header p { font-size:1.2rem; opacity:0.8; }
+        .certificates { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:30px; padding:0 20px; }
+        .certificate-card { background:white; border-radius:12px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.1); transition:transform 0.3s ease; }
+        .certificate-card:hover { transform:translateY(-5px); }
+        .certificate-header { display:flex; align-items:center; justify-content:space-between; padding:20px; border-bottom:1px solid #eee; }
+        .certificate-logo { width:80px; height:80px; border-radius:50%; background:#e0e4ee; flex-shrink:0; }
+        .certificate-info { display:flex; flex-direction:column; }
+        .certificate-title { font-size:1.8rem; font-weight:700; margin-bottom:10px; color:#2e3c54; }
+        .certificate-issuer { color:#6e78a2; font-size:1rem; margin-bottom:8px; }
+        .certificate-date { color:#7c86bc; font-size:0.9rem; }
+        .certificate-content { padding:20px; }
+        .footer { text-align:center; padding:40px 20px; background:#2e3c54; color:white; font-size:0.9rem; margin-top:60px; }
+        .footer a { color:#e0e4ee; text-decoration:none; margin:0 10px; }
+        .footer a:hover { text-decoration:underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>John Doe</h1>
+            <p>Experienced Professional</p>
+        </header>
+        <main class="certificates">
+            <div class="certificate-card">
+                <div class="certificate-header">
+                    <div class="certificate-logo"></div>
+                    <div class="certificate-info">
+                        <div class="certificate-title">Certified Developer</div>
+                        <div class="certificate-issuer">Tech Institute</div>
+                        <div class="certificate-date">June 2023</div>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <p>Completed advanced programming curriculum and demonstrated coding expertise through multiple projects.</p>
+                </div>
+            </div>
+            <div class="certificate-card">
+                <div class="certificate-header">
+                    <div class="certificate-logo"></div>
+                    <div class="certificate-info">
+                        <div class="certificate-title">Digital Marketing Specialist</div>
+                        <div class="certificate-issuer">Marketing Academy</div>
+                        <div class="certificate-date">February 2024</div>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <p>Mastered digital marketing strategies including SEO, social media marketing, and analytics.</p>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Certificate Showcase. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
