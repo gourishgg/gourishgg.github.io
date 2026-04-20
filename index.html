@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gourish Kapoor | Professional Credentials</title>
+    <title>GOURISH KAPOOR | Professional Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,7 +38,6 @@
             padding: 0 20px;
         }
 
-        /* Hero Section */
         header {
             text-align: center;
             padding: 120px 20px 80px;
@@ -48,42 +47,13 @@
             overflow: hidden;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(22, 160, 133, 0.1);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: rgba(232, 168, 124, 0.08);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        header > * {
-            position: relative;
-            z-index: 1;
-        }
-
         header h1 {
             font-family: 'Playfair Display', serif;
             font-size: 3.5rem;
             margin-bottom: 12px;
             font-weight: 700;
             letter-spacing: -1px;
-            animation: slideUp 0.8s ease-out;
+            text-transform: uppercase;
         }
 
         header p {
@@ -93,10 +63,8 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--accent);
-            animation: slideUp 0.8s ease-out 0.2s both;
         }
 
-        /* Section Title */
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
@@ -120,16 +88,13 @@
             border-radius: 2px;
         }
 
-        /* Certificates Grid */
         .certificates {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
-            padding: 0;
             margin-bottom: 80px;
         }
 
-        /* Certificate Card */
         .certificate-card {
             background: white;
             border-radius: 16px;
@@ -138,22 +103,6 @@
             transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             border: 1px solid var(--border);
             position: relative;
-            animation: fadeInUp 0.7s ease-out both;
-        }
-
-        .certificate-card:nth-child(1) { animation-delay: 0.1s; }
-        .certificate-card:nth-child(2) { animation-delay: 0.2s; }
-        .certificate-card:nth-child(3) { animation-delay: 0.3s; }
-
-        .certificate-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            z-index: 1;
         }
 
         .certificate-card:hover {
@@ -171,8 +120,8 @@
         }
 
         .certificate-logo {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 12px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             flex-shrink: 0;
@@ -180,21 +129,12 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 40px;
-            font-weight: 600;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .certificate-info {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            flex: 1;
+            font-size: 32px;
         }
 
         .certificate-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 600;
             color: var(--primary);
             line-height: 1.3;
@@ -202,195 +142,103 @@
 
         .certificate-issuer {
             color: var(--secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .certificate-date {
-            color: #999;
-            font-size: 0.85rem;
-            font-weight: 500;
         }
 
         .certificate-content {
             padding: 28px;
             color: #555;
-            line-height: 1.8;
             font-size: 0.95rem;
         }
 
-        /* Footer */
+        .skills-tag {
+            display: inline-block;
+            background: #f0f4f8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 4px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         .footer {
             text-align: center;
             padding: 60px 20px;
-            background: linear-gradient(135deg, var(--primary) 0%, #1a4d7a 100%);
+            background: var(--primary);
             color: white;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--border);
             margin-top: 40px;
-        }
-
-        .footer p {
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        .footer a {
-            color: var(--accent);
-            text-decoration: none;
-            margin: 0 8px;
-            font-weight: 600;
-            transition: opacity 0.3s ease;
-        }
-
-        .footer a:hover {
-            opacity: 0.8;
-        }
-
-        /* Animations */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            header p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-                margin: 60px 0 40px;
-            }
-
-            .certificates {
-                gap: 24px;
-            }
-
-            .certificate-card {
-                border-radius: 12px;
-            }
-
-            .certificate-header {
-                padding: 20px;
-                gap: 16px;
-            }
-
-            .certificate-content {
-                padding: 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header {
-                padding: 80px 20px 60px;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            header p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-                margin: 50px 0 30px;
-            }
-
-            .certificate-title {
-                font-size: 1.3rem;
-            }
-
-            .certificate-logo {
-                width: 70px;
-                height: 70px;
-                font-size: 32px;
-            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Gourish Kapoor</h1>
-        <p>Professional Credentials</p>
+        <h1>GOURISH KAPOOR</h1>
+        <p>Computer Science Student | Backend Developer</p>
+        <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+            ID: 2510990001 | Chitkara University
+        </div>
     </header>
 
     <div class="container">
-        <h2 class="section-title">Certifications & Achievements</h2>
+        <h2 class="section-title">Technical Expertise</h2>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <span class="skills-tag">Python</span>
+            <span class="skills-tag">C / C++</span>
+            <span class="skills-tag">JavaScript</span>
+            <span class="skills-tag">Linux OS</span>
+            <span class="skills-tag">DBMS</span>
+            <span class="skills-tag">HTML5 & Semantic CSS</span>
+        </div>
+
+        <h2 class="section-title">Certifications & Major Projects</h2>
 
         <main class="certificates">
             <div class="certificate-card">
                 <div class="certificate-header">
-                    <div class="certificate-logo">💻</div>
+                    <div class="certificate-logo">☁️</div>
                     <div class="certificate-info">
-                        <div class="certificate-title">Certified Developer</div>
-                        <div class="certificate-issuer">Tech Institute</div>
-                        <div class="certificate-date">June 2023</div>
+                        <div class="certificate-title">OpenShift DO101</div>
+                        <div class="certificate-issuer">Red Hat Academy</div>
                     </div>
                 </div>
                 <div class="certificate-content">
-                    <p>Completed advanced programming curriculum and demonstrated coding expertise through multiple projects and technical assessments.</p>
+                    <p>Training in cloud-native applications and container orchestration, focusing on deploying and managing applications on OpenShift clusters.</p>
                 </div>
             </div>
 
             <div class="certificate-card">
                 <div class="certificate-header">
-                    <div class="certificate-logo">📈</div>
+                    <div class="certificate-logo">⚛️</div>
                     <div class="certificate-info">
-                        <div class="certificate-title">Digital Marketing Specialist</div>
-                        <div class="certificate-issuer">Marketing Academy</div>
-                        <div class="certificate-date">February 2024</div>
+                        <div class="certificate-title">3D Physics Simulation</div>
+                        <div class="certificate-issuer">Technical Project</div>
                     </div>
                 </div>
                 <div class="certificate-content">
-                    <p>Mastered digital marketing strategies including SEO, social media marketing, analytics, and campaign optimization techniques.</p>
+                    <p>Developed interactive 3D simulations to visualize complex physics principles, utilizing core programming logic and mathematical modeling.</p>
                 </div>
             </div>
 
             <div class="certificate-card">
                 <div class="certificate-header">
-                    <div class="certificate-logo">🎓</div>
+                    <div class="certificate-logo">🌐</div>
                     <div class="certificate-info">
-                        <div class="certificate-title">Advanced Web Development</div>
-                        <div class="certificate-issuer">Code Academy</div>
-                        <div class="certificate-date">April 2024</div>
+                        <div class="certificate-title">Full-Stack Development</div>
+                        <div class="certificate-issuer">Internet & Web Tech (IWT)</div>
                     </div>
                 </div>
                 <div class="certificate-content">
-                    <p>Specialized training in modern web technologies, full-stack development, and responsive design principles for professional applications.</p>
+                    <p>Designed and deployed static and dynamic sites, including blog systems and contact forms, with a focus on clean, framework-free CSS.</p>
                 </div>
             </div>
         </main>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2024 Gourish Kapoor. All rights reserved.</p>
+        <p>&copy; 2026 GOURISH KAPOOR. Built for Professional Excellence.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Based in Khanna, Punjab, India</p>
     </footer>
 </body>
 </html>
