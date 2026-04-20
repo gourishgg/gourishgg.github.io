@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GOURISH KAPOOR | Professional Portfolio</title>
+    <title>Gourish Kapoor | Professional Credentials</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0f3460;
             --secondary: #16a085;
             --accent: #e8a87c;
+            --university: #d4af37; /* A subtle gold for university branding */
             --light-bg: #fafbfc;
             --dark-text: #1a1a1a;
             --border: #e0e4ea;
@@ -33,11 +34,12 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* Hero Section */
         header {
             text-align: center;
             padding: 120px 20px 80px;
@@ -45,6 +47,36 @@
             color: white;
             position: relative;
             overflow: hidden;
+            border-bottom: 2px solid var(--university); /* subtle university accent on border */
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(22, 160, 133, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(232, 168, 124, 0.08);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        header > * {
+            position: relative;
+            z-index: 1;
         }
 
         header h1 {
@@ -53,48 +85,69 @@
             margin-bottom: 12px;
             font-weight: 700;
             letter-spacing: -1px;
-            text-transform: uppercase;
+            animation: slideUp 0.8s ease-out;
         }
 
-        header p {
+        header p.main-credential {
             font-size: 1.1rem;
             opacity: 0.95;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--accent);
+            animation: slideUp 0.8s ease-out 0.2s both;
+            margin-bottom: 5px;
         }
 
-        .section-title {
+        header p.sub-credential {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #ddd;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        /* Category Title */
+        .category-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: var(--primary);
-            margin: 80px 0 50px;
-            text-align: center;
+            margin: 60px 0 30px;
+            text-align: left;
             font-weight: 600;
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            opacity: 0; /* Hidden initially for animation */
+            transform: translateY(20px);
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            border-radius: 2px;
+        .category-title.university {
+             color: var(--primary);
+             border-color: var(--university);
         }
 
+        .category-title.active {
+            animation: categoryReveal 0.8s ease-out forwards;
+        }
+
+        /* Certificates Grid */
         .certificates {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
             gap: 32px;
+            padding: 0;
             margin-bottom: 80px;
+            opacity: 0; /* Hidden initially for animation */
+            transform: scale(0.95);
         }
 
+        .certificates.active {
+            animation: gridReveal 0.8s ease-out 0.3s forwards;
+        }
+
+        /* Certificate Card */
         .certificate-card {
             background: white;
             border-radius: 16px;
@@ -105,10 +158,38 @@
             position: relative;
         }
 
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 18px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 0;
+        }
+
         .certificate-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) scale(1.02);
             box-shadow: var(--shadow-lg);
             border-color: var(--secondary);
+        }
+
+        .certificate-card:hover::before {
+            opacity: 1;
+        }
+
+        .certificate-card-inner {
+            background: white;
+            border-radius: 16px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .certificate-header {
@@ -119,17 +200,34 @@
             border-bottom: 1px solid var(--border);
         }
 
+        /* University Specific Accent */
+        .certificate-card.university-accent {
+             border-color: var(--university);
+        }
+        .certificate-card.university-accent .certificate-logo {
+            background: linear-gradient(135deg, var(--university), #f0e68c);
+            color: var(--primary);
+        }
+
         .certificate-logo {
             width: 80px;
             height: 80px;
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 32px;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .certificate-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
         }
 
         .certificate-title {
@@ -142,103 +240,399 @@
 
         .certificate-issuer {
             color: var(--secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .certificate-card.university-accent .certificate-issuer {
+             color: var(--primary);
+        }
+
+        .certificate-date {
+            color: #999;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .certificate-content {
             padding: 28px;
             color: #555;
+            line-height: 1.8;
             font-size: 0.95rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .skills-tag {
-            display: inline-block;
-            background: #f0f4f8;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin: 4px;
-            color: var(--primary);
+        .certificate-content > *:last-child {
+            margin-top: auto;
+        }
+
+        /* Roll Number Tag */
+        .roll-no-tag {
+             background-color: var(--university);
+             color: var(--primary);
+             font-size: 0.8rem;
+             font-weight: 600;
+             padding: 4px 10px;
+             border-radius: 20px;
+             position: absolute;
+             top: 20px;
+             right: 20px;
+             z-index: 2;
+        }
+
+        /* Verify Link */
+        .verify-link {
+            color: var(--secondary);
+            text-decoration: none;
             font-weight: 600;
+            font-size: 0.85rem;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        .verify-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
             padding: 60px 20px;
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, #1a4d7a 100%);
             color: white;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
             margin-top: 40px;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes categoryReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gridReveal {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes cardReveal {
+             from {
+                 opacity: 0;
+                 transform: translateY(20px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+        }
+
+        /* Sequential card reveal delays */
+        .certificate-card:nth-child(1) { animation-delay: 0.1s; }
+        .certificate-card:nth-child(2) { animation-delay: 0.2s; }
+        .certificate-card:nth-child(3) { animation-delay: 0.3s; }
+        .certificate-card:nth-child(4) { animation-delay: 0.4s; }
+        .certificate-card:nth-child(5) { animation-delay: 0.5s; }
+        .certificate-card:nth-child(6) { animation-delay: 0.6s; }
+        .certificate-card:nth-child(7) { animation-delay: 0.7s; }
+        .certificate-card:nth-child(8) { animation-delay: 0.8s; }
+        .certificate-card:nth-child(9) { animation-delay: 0.9s; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p.main-credential, header p.sub-credential {
+                font-size: 1rem;
+            }
+
+            .category-title {
+                font-size: 1.4rem;
+                margin: 50px 0 25px;
+            }
+
+            .certificates {
+                gap: 24px;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+
+            .certificate-card {
+                border-radius: 12px;
+            }
+
+            .certificate-header {
+                padding: 20px;
+                gap: 16px;
+            }
+
+            .certificate-content {
+                padding: 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 80px 20px 60px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .category-title {
+                font-size: 1.3rem;
+                margin: 40px 0 20px;
+            }
+
+            .certificate-title {
+                font-size: 1.3rem;
+            }
+
+            .certificate-logo {
+                width: 70px;
+                height: 70px;
+                font-size: 32px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>GOURISH KAPOOR</h1>
-        <p>Computer Science Student | Backend Developer</p>
-        <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
-            ID: 2510990001 | Chitkara University
-        </div>
+        <p class="main-credential">Bachelor of Engineering (Computer Science & Engineering)</p>
+        <p class="sub-credential">Chitkara University (Punjab)</p>
     </header>
 
     <div class="container">
-        <h2 class="section-title">Technical Expertise</h2>
-        <div style="text-align: center; margin-bottom: 40px;">
-            <span class="skills-tag">Python</span>
-            <span class="skills-tag">C / C++</span>
-            <span class="skills-tag">JavaScript</span>
-            <span class="skills-tag">Linux OS</span>
-            <span class="skills-tag">DBMS</span>
-            <span class="skills-tag">HTML5 & Semantic CSS</span>
-        </div>
-
-        <h2 class="section-title">Certifications & Major Projects</h2>
-
-        <main class="certificates">
-            <div class="certificate-card">
-                <div class="certificate-header">
-                    <div class="certificate-logo">☁️</div>
-                    <div class="certificate-info">
-                        <div class="certificate-title">OpenShift DO101</div>
-                        <div class="certificate-issuer">Red Hat Academy</div>
-                    </div>
-                </div>
-                <div class="certificate-content">
-                    <p>Training in cloud-native applications and container orchestration, focusing on deploying and managing applications on OpenShift clusters.</p>
-                </div>
+        <h2 id="university-title" class="category-title university">University & Skill Development Achievements</h2>
+        <main id="university-grid" class="certificates active">
+            <div class="certificate-card university-accent">
+                 <div class="certificate-card-inner">
+                      <div class="roll-no-tag">Roll No: 2510990001</div>
+                      <div class="certificate-header">
+                           <div class="certificate-logo">CU</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Foundation to Future (F2F): Programming Challenges - 1 (C programming)</div>
+                                <div class="certificate-issuer">Department of Computer Science & Engineering</div>
+                                <div class="certificate-date">March 30, April 1, April 3, 2026 (4.5 Hrs)</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Completed Module 8, focusing on problem-solving activities using C programming. Applied logic, developed algorithms, and implemented solutions to strengthen coding and analytical skills.</p>
+                      </div>
+                 </div>
             </div>
-
-            <div class="certificate-card">
-                <div class="certificate-header">
-                    <div class="certificate-logo">⚛️</div>
-                    <div class="certificate-info">
-                        <div class="certificate-title">3D Physics Simulation</div>
-                        <div class="certificate-issuer">Technical Project</div>
-                    </div>
-                </div>
-                <div class="certificate-content">
-                    <p>Developed interactive 3D simulations to visualize complex physics principles, utilizing core programming logic and mathematical modeling.</p>
-                </div>
+            <div class="certificate-card university-accent">
+                 <div class="certificate-card-inner">
+                      <div class="roll-no-tag">Roll No: 2510990001</div>
+                      <div class="certificate-header">
+                           <div class="certificate-logo">CU</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Foundation to Future (F2F): Programming Challenges - 2 (C programming)</div>
+                                <div class="certificate-issuer">Department of Computer Science & Engineering</div>
+                                <div class="certificate-date">April 6, April 8, April 10, 2026 (4.5 Hrs)</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Completed Module 9, focusing on problem-solving activities using C programming. Applied logic, developed algorithms, and implemented solutions to strengthen coding and analytical skills.</p>
+                      </div>
+                 </div>
             </div>
+            <div class="certificate-card university-accent">
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">CU</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Certificate of Participation: VisionUI</div>
+                                <div class="certificate-issuer">IE(I) CSE Student Branch</div>
+                                <div class="certificate-date">Oct 15, 2025</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Participated in VisionUI - Where Innovation Meets Collaboration. Showcased active participation, strong design sense, and an innovative approach in learn-and-excel in frontend development.</p>
+                      </div>
+                 </div>
+            </div>
+             <div class="certificate-card university-accent">
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">CU</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">VaultHeist Participation</div>
+                                <div class="certificate-issuer">unstop (Organized by CGC University Mohali)</div>
+                                <div class="certificate-date">2025</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Participated in the VaultHeist event organized by CGC University Mohali.</p>
+                      </div>
+                 </div>
+            </div>
+        </main>
 
+        <h2 id="specialized-title" class="category-title">Specialized Professional Programs</h2>
+        <main id="specialized-grid" class="certificates active">
             <div class="certificate-card">
-                <div class="certificate-header">
-                    <div class="certificate-logo">🌐</div>
-                    <div class="certificate-info">
-                        <div class="certificate-title">Full-Stack Development</div>
-                        <div class="certificate-issuer">Internet & Web Tech (IWT)</div>
-                    </div>
-                </div>
-                <div class="certificate-content">
-                    <p>Designed and deployed static and dynamic sites, including blog systems and contact forms, with a focus on clean, framework-free CSS.</p>
-                </div>
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">Coursera</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Natural Disaster and Climate Change Risk Assessment</div>
+                                <div class="certificate-issuer">Coursera & Inter-American Institute (BID Academy)</div>
+                                <div class="certificate-date">Oct 29, 2025</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Completed a non-credit Specialization aimed at officials, professionals, and team members formulating, executing, or overseeing infrastructure projects. Built knowledge and tools to enhance technical capabilities and decision-making by integrating qualitative and quantitative analysis and incorporating the governance of natural disaster risk and climate change resilience. Through 3 courses:
+                            <br>• Natural Disaster Risk in Infrastructure Projects
+                            <br>• Qualitative and Quantitative Analysis of Disaster Risk
+                            <br>• Decision Making and Governance of Natural Disaster Risk</p>
+                           <a href="https://coursera.org/verify/specialization/A6F33CFF84EE" class="verify-link" target="_blank">Verify: A6F33CFF84EE</a>
+                      </div>
+                 </div>
+            </div>
+            <div class="certificate-card">
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">AI</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">AI and Disaster Management</div>
+                                <div class="certificate-issuer">coursera & DeepLearning.AI</div>
+                                <div class="certificate-date">Oct 7, 2025</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Completed a specialized non-credit online course authorized by DeepLearning.AI.</p>
+                           <a href="https://coursera.org/verify/C1KCGK5M1JNR" class="verify-link" target="_blank">Verify: C1KCGK5M1JNR</a>
+                      </div>
+                 </div>
+            </div>
+        </main>
+
+        <h2 id="technical-title" class="category-title">Industry Technical Certifications</h2>
+        <main id="technical-grid" class="certificates active">
+            <div class="certificate-card">
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">Red Hat</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Introduction to Red Hat OpenShift Applications (DO101 - Ver. 4.6)</div>
+                                <div class="certificate-issuer">Red Hat Academy</div>
+                                <div class="certificate-date">Dec 11, 2025 (8 Credit Hours)</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Attended the course focused on fundamental skills for Red Hat OpenShift.</p>
+                           <p style="font-size: 0.8rem; color: #777;">Verify this certificate at <a href="https://www.credly.com/badges/verify" class="verify-link" target="_blank" style="display:inline; margin:0; padding:0;">credly.com/badges/verify</a></p>
+                      </div>
+                 </div>
+            </div>
+            <div class="certificate-card">
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">Cisco</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Operating Systems Support</div>
+                                <div class="certificate-issuer">Cisco Networking Academy</div>
+                                <div class="certificate-date">Nov 24, 2025</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Successfully achieved student level credential for proficiency in: Assist users in resolving Windows operating system issues; Resolve Linux and macOS operating system issues; Resolve mobile device issues; Describe virtualization and cloud terminology; Resolve common application issues.</p>
+                      </div>
+                 </div>
+            </div>
+             <div class="certificate-card">
+                 <div class="certificate-card-inner">
+                      <div class="certificate-header">
+                           <div class="certificate-logo">Infosys</div>
+                           <div class="certificate-info">
+                                <div class="certificate-title">Python Game Development - Advanced</div>
+                                <div class="certificate-issuer">Infosys Springboard</div>
+                                <div class="certificate-date">Dec 8, 2025</div>
+                           </div>
+                      </div>
+                      <div class="certificate-content">
+                           <p>Successfully completed the Advanced Python Game Development course.</p>
+                           <p style="font-size: 0.8rem; color: #777;">Verify this certificate at <a href="https://verify.onwingspan.com" class="verify-link" target="_blank" style="display:inline; margin:0; padding:0;">verify.onwingspan.com</a></p>
+                      </div>
+                 </div>
             </div>
         </main>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 GOURISH KAPOOR. Built for Professional Excellence.</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.6;">Based in Khanna, Punjab, India</p>
+        <p>&copy; 2024 Gourish Kapoor. All rights reserved.</p>
+        <p style="font-size: 0.8rem; opacity: 0.7;">Chitkara University (Punjab) - Bachelor of Engineering (CSE)</p>
     </footer>
+
+    <script>
+        // Use Intersection Observer for category reveals
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const revealOnScroll = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Targeted list of titles and grids
+        const revealTargets = [
+            'university-title', 'university-grid',
+            'specialized-title', 'specialized-grid',
+            'technical-title', 'technical-grid'
+        ];
+
+        revealTargets.forEach(id => {
+            const target = document.getElementById(id);
+            if (target) {
+                // Ensure initial hidden state
+                if (id.endsWith('-grid')) {
+                    target.style.opacity = '0';
+                    target.style.transform = 'scale(0.95)';
+                } else {
+                    target.style.opacity = '0';
+                    target.style.transform = 'translateY(20px)';
+                }
+                revealOnScroll.observe(target);
+            }
+        });
+    </script>
 </body>
 </html>
