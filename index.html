@@ -14,9 +14,21 @@
             --light-bg: #fafbfc;
             --dark-text: #1a1a1a;
             --border: #e0e4ea;
+            --card-bg: #ffffff;
             --shadow-sm: 0 2px 8px rgba(15, 52, 96, 0.08);
             --shadow-md: 0 8px 24px rgba(15, 52, 96, 0.12);
             --shadow-lg: 0 16px 48px rgba(15, 52, 96, 0.15);
+        }
+
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --light-bg: #121212;
+            --dark-text: #f1f1f1;
+            --border: #333333;
+            --card-bg: #1e1e1e;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.8);
         }
 
         * {
@@ -31,6 +43,7 @@
             color: var(--dark-text);
             line-height: 1.7;
             letter-spacing: 0.3px;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         .container {
@@ -39,7 +52,7 @@
             padding: 0 20px;
         }
 
-        /* Hero Section */
+        /* Header & Dark Mode Toggle */
         header {
             text-align: center;
             padding: 120px 20px 80px;
@@ -48,6 +61,29 @@
             position: relative;
             overflow: hidden;
             border-bottom: 2px solid var(--university);
+        }
+
+        #darkModeToggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        #darkModeToggle:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         header::before {
@@ -74,10 +110,7 @@
             z-index: 0;
         }
 
-        header > * {
-            position: relative;
-            z-index: 1;
-        }
+        header > * { position: relative; z-index: 1; }
 
         header h1 {
             font-family: 'Playfair Display', serif;
@@ -108,6 +141,11 @@
             animation: slideUp 0.8s ease-out 0.4s both;
         }
 
+        #certCount {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
         /* Category Title */
         .category-title {
             font-family: 'Playfair Display', serif;
@@ -124,15 +162,9 @@
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
-        .category-title.university {
-             color: var(--primary);
-             border-color: var(--university);
-        }
-
-        .category-title.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        body.dark-mode .category-title { color: #8bb4e5; }
+        .category-title.university { border-color: var(--university); }
+        .category-title.active { opacity: 1; transform: translateY(0); }
 
         /* Certificates Grid */
         .certificates {
@@ -146,14 +178,11 @@
             transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
         }
 
-        .certificates.active {
-            opacity: 1;
-            transform: scale(1);
-        }
+        .certificates.active { opacity: 1; transform: scale(1); }
 
         /* Certificate Card */
         .certificate-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
@@ -184,18 +213,17 @@
             border-color: var(--secondary);
         }
 
-        .certificate-card:hover::before {
-            opacity: 1;
-        }
+        .certificate-card:hover::before { opacity: 1; }
 
         .certificate-card-inner {
-            background: white;
+            background: var(--card-bg);
             border-radius: 16px;
             position: relative;
             z-index: 1;
             display: flex;
             flex-direction: column;
             height: 100%;
+            transition: background-color 0.4s ease;
         }
 
         .certificate-header {
@@ -206,9 +234,7 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .certificate-card.university-accent {
-             border-color: var(--university);
-        }
+        .certificate-card.university-accent { border-color: var(--university); }
         .certificate-card.university-accent .certificate-logo {
             background: linear-gradient(135deg, var(--university), #f0e68c);
             color: var(--primary);
@@ -244,6 +270,8 @@
             line-height: 1.3;
         }
 
+        body.dark-mode .certificate-title { color: #8bb4e5; }
+
         .certificate-issuer {
             color: var(--secondary);
             font-size: 0.95rem;
@@ -251,9 +279,8 @@
             letter-spacing: 0.5px;
         }
 
-        .certificate-card.university-accent .certificate-issuer {
-             color: var(--primary);
-        }
+        .certificate-card.university-accent .certificate-issuer { color: var(--primary); }
+        body.dark-mode .certificate-card.university-accent .certificate-issuer { color: #d4af37; }
 
         .certificate-date {
             color: #999;
@@ -272,6 +299,8 @@
             gap: 15px;
         }
 
+        body.dark-mode .certificate-content { color: #bbb; }
+
         .roll-no-tag {
              background-color: var(--university);
              color: var(--primary);
@@ -285,7 +314,7 @@
              z-index: 2;
         }
 
-        /* View Certificate Button */
+        /* Buttons & Links */
         .view-cert-btn {
             margin-top: auto;
             padding: 10px 20px;
@@ -325,6 +354,41 @@
             text-decoration: underline;
         }
 
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background: linear-gradient(135deg, var(--primary), #1a4d7a);
+            color: white;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #scrollTopBtn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #scrollTopBtn:hover {
+            background: linear-gradient(135deg, var(--secondary), #12876f);
+            transform: translateY(-5px);
+        }
+
         /* Modal / Lightbox Styles */
         .modal {
             display: none;
@@ -341,9 +405,7 @@
             transition: opacity 0.3s ease;
         }
 
-        .modal.show {
-            opacity: 1;
-        }
+        .modal.show { opacity: 1; }
 
         .modal-content {
             margin: auto;
@@ -380,7 +442,6 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         @keyframes zoomIn {
             from { transform: scale(0.8); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
@@ -402,20 +463,21 @@
             .certificates { grid-template-columns: 1fr; }
             .close-modal { right: 20px; top: 10px; }
             .modal-content { max-width: 95%; }
+            #darkModeToggle { top: 10px; right: 10px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
     <header>
+        <button id="darkModeToggle">🌙 Dark Mode</button>
         <h1>GOURISH KAPOOR</h1>
         <p class="main-credential">Bachelor of Engineering (Computer Science & Engineering)</p>
-        <p class="sub-credential">Chitkara University (Punjab)</p>
+        <p class="sub-credential">Chitkara University (Punjab) | <span id="certCount">Loading...</span></p>
     </header>
 
     <div class="container">
         <h2 id="university-title" class="category-title university">University & Skill Development Achievements</h2>
         <main id="university-grid" class="certificates">
-            
             <div class="certificate-card university-accent">
                  <div class="certificate-card-inner">
                       <div class="roll-no-tag">Roll No: 2510990001</div>
@@ -489,7 +551,6 @@
 
         <h2 id="specialized-title" class="category-title">Specialized Professional Programs</h2>
         <main id="specialized-grid" class="certificates">
-            
             <div class="certificate-card">
                  <div class="certificate-card-inner">
                       <div class="certificate-header">
@@ -529,7 +590,6 @@
 
         <h2 id="technical-title" class="category-title">Industry Technical Certifications</h2>
         <main id="technical-grid" class="certificates">
-            
             <div class="certificate-card">
                  <div class="certificate-card-inner">
                       <div class="certificate-header">
@@ -583,6 +643,8 @@
         </main>
     </div>
 
+    <button id="scrollTopBtn" title="Go to top">↑</button>
+
     <div id="imageModal" class="modal">
         <span class="close-modal">&times;</span>
         <img class="modal-content" id="modalImage" alt="Certificate Display">
@@ -628,45 +690,89 @@
         const modalImg = document.getElementById("modalImage");
         const closeBtn = document.getElementsByClassName("close-modal")[0];
 
-        // Attach click event to all 'View Certificate' buttons
         document.querySelectorAll('.view-cert-btn').forEach(button => {
             button.addEventListener('click', function() {
                 const imageSrc = this.getAttribute('data-src');
                 modal.style.display = "block";
                 modalImg.src = imageSrc;
                 
-                // Slight delay to allow CSS transition to kick in for fade effect
-                setTimeout(() => {
-                    modal.classList.add("show");
-                }, 10);
+                setTimeout(() => { modal.classList.add("show"); }, 10);
             });
         });
 
-        // Close Modal Handlers
         const closeModal = () => {
             modal.classList.remove("show");
-            // Wait for fade out transition before hiding display
             setTimeout(() => {
                 modal.style.display = "none";
-                modalImg.src = ""; // Clear src to prevent flickering on next open
+                modalImg.src = ""; 
             }, 300);
         };
 
-        // Click on X
         closeBtn.addEventListener('click', closeModal);
 
-        // Click outside image
         window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModal();
+            if (event.target === modal) { closeModal(); }
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" && modal.style.display === "block") { closeModal(); }
+        });
+
+        // --- 3. Dark Mode Toggle ---
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check Local Storage for Theme Preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            darkModeToggle.textContent = '☀️ Light Mode';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.textContent = '☀️ Light Mode';
+            } else {
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.textContent = '🌙 Dark Mode';
             }
         });
 
-        // Press Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" && modal.style.display === "block") {
-                closeModal();
+        // --- 4. Scroll to Top Button ---
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
             }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- 5. Dynamic Certificate Counter ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const certCards = document.querySelectorAll('.certificate-card');
+            const certCountElement = document.getElementById('certCount');
+            const totalCerts = certCards.length;
+            
+            let currentCount = 0;
+            // Calculate a dynamic interval so the animation always takes ~1.5 seconds total
+            const intervalTime = 1500 / totalCerts; 
+
+            const counterInterval = setInterval(() => {
+                currentCount++;
+                certCountElement.textContent = `${currentCount} Credentials Earned`;
+                
+                if (currentCount >= totalCerts) {
+                    clearInterval(counterInterval);
+                }
+            }, intervalTime);
         });
     </script>
 </body>
